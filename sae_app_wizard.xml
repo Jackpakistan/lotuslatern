@@ -1,0 +1,20 @@
+<appwizard><introduction><name></name><author>yiisae官方</author><icon></icon><homepage></homepage><description><![CDATA[yiisae 更新版本]]></description></introduction><platform><services><service></service><service name="uploads"  params="数据存储">Storage</service><service size="2M">Memcache</service><service>Mysql</service></services><appconfig><tpl><![CDATA[
+name: <<appname>>
+version: <<version>>
+version: 1
+handle:
+- rewrite: if(!is_dir() && !is_file() && path ~ "/demos/blog/") goto "/demos/blog/index.php?%{QUERY_STRING}"
+- rewrite: if(!is_dir() && !is_file() && path ~ "/demos/hangman/") goto "/demos/hangman/index.php?%{QUERY_STRING}"
+- rewrite: if(!is_dir() && !is_file() && path ~ "/demos/helloworld/") goto "/demos/helloworld/index.php?%{QUERY_STRING}"
+- rewrite: if(!is_dir() && !is_file() && path ~ "/demos/phonebook/") goto "/demos/phonebook/index.php?%{QUERY_STRING}"
+- rewrite: if(!is_dir() && !is_file() && path ~ "/yiicms/") goto "/yiicms/index.php?%{QUERY_STRING}"
+
+- expire: if(path ~ ".js$") time 8640000
+- expire: if(path ~ ".css$") time 8640000
+- compress: if ( out_header["Content-Length"]>=50) compress
+- compress: if ( out_header["Content-type"]=="text/css" ) compress
+- compress: if ( out_header["Content-type"]=="text/javascript" ) compress
+- compress: if ( out_header["Content-type"]=="text/html" ) compress
+- compress: if ( out_header["Content-type"]=="text/plain" ) compress
+- compress: if ( out_header["Use-Compress"] == "1") compress
+]]></tpl></appconfig></platform><code><initScript>install.php</initScript></code></appwizard>
