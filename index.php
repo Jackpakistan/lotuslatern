@@ -1,2 +1,2 @@
 <?php
-echo '<strong>Welcome to SAE——develop!</strong>';
+echo '<strong>Welcome to SAE!</strong>';
